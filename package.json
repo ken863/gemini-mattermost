@@ -1,0 +1,24 @@
+{
+  "name": "gemini-mattermost",
+  "version": "1.0.0",
+  "description": "use gemini ai in mattermost",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js"
+  },
+  "keywords": [
+    "gemini",
+    "mattermost",
+    "ai"
+  ],
+  "author": "lam.pt",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.3.1",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "express": "^5.0.0-beta.2",
+    "express-rate-limit": "^7.2.0",
+    "moment": "^2.30.1"
+  }
+}

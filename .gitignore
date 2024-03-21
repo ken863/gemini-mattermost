@@ -1,0 +1,6 @@
+.env
+node_modules
+workspaceConfig.code-workspace
+.vscode
+.idea
+.nyc_output
