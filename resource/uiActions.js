@@ -11,7 +11,7 @@ class UIactions {
 
   async translateIntoVNFromText(req, res, axios) {
     const msg = "Dịch sang tiếng việt: " + req.body.text;
-    this.gemniAiAction(msg, res);
+    this.gemniAiAction(req, msg, res);
   }
 
   async translateIntoJPFromText(req, res, axios) {
