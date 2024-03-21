@@ -33,6 +33,9 @@ module.exports = (app, axios) => {
       case '/jp':
         uiActions.translateIntoJPFromText(req, res, axios);
         break;
+      case '/ask':
+        uiActions.askGemini(req, res, axios);
+        break;
       default:
         break;
     }

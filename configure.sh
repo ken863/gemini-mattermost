@@ -6,20 +6,13 @@ until [ $OK = "y" ]; do
   if [ -z "$INT_URL" ]; then
     INT_URL="http://localhost:3000"
   fi
-  read -rp 'MM_URL (http://localhost:8065/api/v4): ' MM_URL
-  if [ -z "$MM_URL" ]; then
-    MM_URL="http://localhost:8065/api/v4"
-  fi
 
-  echo "\nPlease enter the generated access tokens for OpenProject and Mattermost"
-  read -rp 'MATTERMOST_SLASH_TOKEN: ' MATTERMOST_SLASH_TOKEN
-  read -rp 'MATTERMOST_BOT_TOKEN: ' MATTERMOST_BOT_TOKEN
+  echo "\nPlease enter the generated access tokens"
+  read -rp 'GEMINI_ACCESS_TOKEN: ' GEMINI_ACCESS_TOKEN
 
   echo '\nInput environment variables:\n'
   echo INT_URL=$INT_URL
-  echo MM_URL=$MM_URL
-  echo MATTERMOST_SLASH_TOKEN="$MATTERMOST_SLASH_TOKEN"
-  echo MATTERMOST_BOT_TOKEN="$MATTERMOST_BOT_TOKEN"
+  echo GEMINI_ACCESS_TOKEN="$GEMINI_ACCESS_TOKEN"
 
   read -rp 'Is this OK (y/n) ? ' OK
   if [ -z "$OK" ]; then
@@ -27,8 +20,8 @@ until [ $OK = "y" ]; do
   fi
 done
 echo '\nGenerating .env file...'
-ENV_CONTENTS='/\nINT_URL='$INT_URL'/\nMM_URL='$MM_URL'/\nMATTERMOST_SLASH_TOKEN='$MATTERMOST_SLASH_TOKEN'\nMATTERMOST_BOT_TOKEN='$MATTERMOST_BOT_TOKEN
+ENV_CONTENTS='INT_URL='$INT_URL'/\nGEMINI_ACCESS_TOKEN='$GEMINI_ACCESS_TOKEN
 
 touch .env
-echo "$ENV_CONTENTS" >.env
+echo -e "$ENV_CONTENTS" >.env
 echo '\nDone.'

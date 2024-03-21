@@ -18,26 +18,36 @@ class UIactions {
 
   async translateIntoVNFromText(req, res, axios) {
     const msg = "Dịch sang tiếng việt: " + req.body.text;
-    this.gemniAiAction(msg, res);
+    this.gemniAiAction(req,msg, res);
   }
 
   async translateIntoJPFromText(req, res, axios) {
     const msg = "Dịch sang tiếng nhật: " + req.body.text;
-    this.gemniAiAction(msg, res);
+    this.gemniAiAction(req,msg, res);
   }
 
-  async gemniAiAction(msg, res){
-    console.log(msg);
+  async askGemini(req, res, axios) {
+    const msg = req.body.text;
+    this.gemniAiAction(req,msg, res);
+  }
 
-    const chat = this.model.startChat();
+  async gemniAiAction(req, msg, res){
+    try{
+      console.log(msg);
 
-    const result = await chat.sendMessage(msg);
-    const response = await result.response;
-    const responsetext = response.text();
+      const chat = this.model.startChat();
 
-    console.log(JSON.stringify(response, null, 2));
+      const result = await chat.sendMessage(msg);
+      const response = await result.response;
+      const responsetext = response.text();
 
-    res.send(responsetext);
+      console.log(JSON.stringify(response, null, 2));
+
+      res.send(req.body.text + "\n\n>"+responsetext);
+    }
+    catch{
+      res.send("Không thể xử lý yêu cầu/câu hỏi: " + msg);
+    }
   }
 }
 
