@@ -44,7 +44,7 @@ class UIactions {
       res.send(req.body.text + "\n\n>"+responsetext);
     }
     catch (err) {
-      console.log(JSON.stringify(err, null, 2));
+      console.log(err);
       res.send("Không thể xử lý yêu cầu/câu hỏi: " + msg);
     }
   }
