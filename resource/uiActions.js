@@ -41,11 +41,10 @@ class UIactions {
       const response = await result.response;
       const responsetext = response.text();
 
-      console.log(JSON.stringify(response, null, 2));
-
       res.send(req.body.text + "\n\n>"+responsetext);
     }
-    catch{
+    catch {
+      console.log(JSON.stringify(response, null, 2));
       res.send("Không thể xử lý yêu cầu/câu hỏi: " + msg);
     }
   }
