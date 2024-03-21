@@ -27,17 +27,15 @@ class UIactions {
   }
 
   async gemniAiAction(msg, res){
-    const chat = this.model.startChat({
-        generationConfig: {
-            maxOutputTokens: 100,
-        },
-    });
+    console.log(msg);
+
+    const chat = this.model.startChat();
 
     const result = await chat.sendMessage(msg);
     const response = await result.response;
     const responsetext = response.text();
 
-    // console.log(JSON.stringify(response, null, 2));
+    console.log(JSON.stringify(response, null, 2));
 
     res.send(responsetext);
   }
