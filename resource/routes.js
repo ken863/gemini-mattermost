@@ -1,12 +1,6 @@
-require('./message');
-
 module.exports = (app, axios) => {
-
-  const mmURL = process.env.MM_URL;
-  const intURL = process.env.INT_URL;
-
   const UIActions = require('./uiActions');
-  const uiActions = new UIActions(mmURL, intURL);
+  const uiActions = new UIActions();
 
   const RateLimit = require('express-rate-limit');
   const limiter = RateLimit({
@@ -17,10 +11,6 @@ module.exports = (app, axios) => {
   });
 
   app.use(limiter);
-
-  app.get('/', (req, res) => {
-    res.send("Hello there! Good to see you here :) We don't know what to show here yet!").status(200);
-  });
 
   app.post('/', (req, res) => {
     const {command, token, text} = req.body;
